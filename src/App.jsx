@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import Sidebar from './components/layout/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Tasks from './pages/Tasks';
 import Planner from './pages/Planner';
@@ -8,7 +9,8 @@ import Analytics from './pages/Analytics';
 export default function App() {
   return (
     <div className="min-h-screen bg-surface-50 dark:bg-surface-950 transition-colors duration-300">
-      <main className="p-8">
+      <Sidebar />
+      <main className="ml-64 p-8 min-h-screen">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/tasks" element={<Tasks />} />

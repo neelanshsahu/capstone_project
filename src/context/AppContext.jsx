@@ -12,10 +12,40 @@ function loadState(key, fallback) {
   }
 }
 
+// ===== Seed Data =====
+function daysAgo(n) {
+  const d = new Date();
+  d.setDate(d.getDate() - n);
+  return d.toISOString();
+}
+
+const SEED_TASKS = [
+  { id: 's1', title: 'Complete React Hooks assignment', priority: 'high', category: 'assignment', completed: true, createdAt: daysAgo(6) },
+  { id: 's2', title: 'Read Chapter 5 — Data Structures', priority: 'medium', category: 'study', completed: true, createdAt: daysAgo(5) },
+  { id: 's3', title: 'Build REST API for capstone backend', priority: 'high', category: 'project', completed: true, createdAt: daysAgo(4) },
+  { id: 's4', title: 'Revise CSS Flexbox & Grid notes', priority: 'low', category: 'revision', completed: true, createdAt: daysAgo(3) },
+  { id: 's5', title: 'Practice MongoDB aggregation queries', priority: 'medium', category: 'study', completed: false, createdAt: daysAgo(2) },
+  { id: 's6', title: 'Write unit tests for auth module', priority: 'high', category: 'project', completed: false, createdAt: daysAgo(1) },
+  { id: 's7', title: 'Submit OS lab report', priority: 'medium', category: 'assignment', completed: false, createdAt: daysAgo(0) },
+  { id: 's8', title: 'Review pull request #42', priority: 'low', category: 'project', completed: false, createdAt: daysAgo(0) },
+];
+
+const SEED_SESSIONS = [
+  { id: 'p1', duration: 25, completedAt: daysAgo(5) },
+  { id: 'p2', duration: 25, completedAt: daysAgo(4) },
+  { id: 'p3', duration: 25, completedAt: daysAgo(4) },
+  { id: 'p4', duration: 25, completedAt: daysAgo(3) },
+  { id: 'p5', duration: 25, completedAt: daysAgo(2) },
+  { id: 'p6', duration: 25, completedAt: daysAgo(1) },
+  { id: 'p7', duration: 25, completedAt: daysAgo(1) },
+  { id: 'p8', duration: 25, completedAt: daysAgo(1) },
+  { id: 'p9', duration: 25, completedAt: daysAgo(0) },
+];
+
 // ===== Initial State =====
 const initialState = {
-  tasks: loadState('tasks', []),
-  pomodoroSessions: loadState('pomodoroSessions', []),
+  tasks: loadState('tasks', SEED_TASKS),
+  pomodoroSessions: loadState('pomodoroSessions', SEED_SESSIONS),
   productivityScores: loadState('productivityScores', []),
   quoteOfDay: null,
   quoteLoading: false,
